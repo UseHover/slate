@@ -1,189 +1,129 @@
 ---
-title: API Reference
+title: Hover Documentation
 
-language_tabs:
+<!-- language_tabs:
   - shell
   - ruby
   - python
-  - javascript
+  - javascript -->
 
 toc_footers:
-  - <a href='#'>Sign Up for a Developer Key</a>
-  - <a href='https://github.com/tripit/slate'>Documentation Powered by Slate</a>
+  - <a href='#'>Sign up to use Hover</a>
 
-includes:
-  - errors
+<!-- includes:
+  - errors -->
 
 search: true
 ---
 
 # Introduction
 
-Welcome to the Kittn API! You can use our API to access Kittn API endpoints, which can get information on various cats, kittens, and breeds in our database.
+Hover is an Android SDK which allows an Android app to use supported Mobile Money wallets to pay for goods and services in-app.
 
-We have language bindings in Shell, Ruby, and Python! You can view code examples in the dark area to the right, and you can switch the programming language of the examples with the tabs in the top right.
+A developer can initiate a payment when a User presses a button or takes another action, or can create a subscription. Hover will deal with initiating the transaction, including getting the user’s permission, and returning the confirmation back to the app. This means that apps can treat a Mobile Money payment just as they would a credit card payment.
 
-This example API documentation page was created with [Slate](https://github.com/tripit/slate). Feel free to edit it and use it as a base for your own API's documentation.
+# Install Hover
 
-# Authentication
+> Add the Hover SDK to your app-level build.gradle dependencies
 
-> To authorize, use this code:
-
-```ruby
-require 'kittn'
-
-api = Kittn::APIClient.authorize!('meowmeowmeow')
-```
-
-```python
-import kittn
-
-api = kittn.authorize('meowmeowmeow')
-```
-
-```shell
-# With shell, you can just pass the correct header with each request
-curl "api_endpoint_here"
-  -H "Authorization: meowmeowmeow"
-```
-
-```javascript
-const kittn = require('kittn');
-
-let api = kittn.authorize('meowmeowmeow');
-```
-
-> Make sure to replace `meowmeowmeow` with your API key.
-
-Kittn uses API keys to allow access to the API. You can register a new Kittn API key at our [developer portal](http://example.com/developers).
-
-Kittn expects for the API key to be included in all API requests to the server in a header that looks like the following:
-
-`Authorization: meowmeowmeow`
-
-<aside class="notice">
-You must replace <code>meowmeowmeow</code> with your personal API key.
-</aside>
-
-# Kittens
-
-## Get All Kittens
-
-```ruby
-require 'kittn'
-
-api = Kittn::APIClient.authorize!('meowmeowmeow')
-api.kittens.get
-```
-
-```python
-import kittn
-
-api = kittn.authorize('meowmeowmeow')
-api.kittens.get()
-```
-
-```shell
-curl "http://example.com/api/kittens"
-  -H "Authorization: meowmeowmeow"
-```
-
-```javascript
-const kittn = require('kittn');
-
-let api = kittn.authorize('meowmeowmeow');
-let kittens = api.kittens.get();
-```
-
-> The above command returns JSON structured like this:
-
-```json
-[
-  {
-    "id": 1,
-    "name": "Fluffums",
-    "breed": "calico",
-    "fluffiness": 6,
-    "cuteness": 7
-  },
-  {
-    "id": 2,
-    "name": "Max",
-    "breed": "unknown",
-    "fluffiness": 5,
-    "cuteness": 10
+```gradle
+buildscript {
+  repositories {
+    mavenCentral()
+    maven { url 'http://maven.usehover.com/releases' }
   }
-]
-```
 
-This endpoint retrieves all kittens.
+  dependencies {
+    classpath 'com.android.tools.build:gradle:2.1.0'
+  }
+}
 
-### HTTP Request
+repositories {
+  mavenCentral()
+  maven { url 'http://maven.usehover.com/releases' }
+}
 
-`GET http://example.com/api/kittens`
-
-### Query Parameters
-
-Parameter | Default | Description
---------- | ------- | -----------
-include_cats | false | If set to true, the result will also include cats.
-available | true | If set to false, the result will include kittens that have already been adopted.
-
-<aside class="success">
-Remember — a happy kitten is an authenticated kitten!
-</aside>
-
-## Get a Specific Kitten
-
-```ruby
-require 'kittn'
-
-api = Kittn::APIClient.authorize!('meowmeowmeow')
-api.kittens.get(2)
-```
-
-```python
-import kittn
-
-api = kittn.authorize('meowmeowmeow')
-api.kittens.get(2)
-```
-
-```shell
-curl "http://example.com/api/kittens/2"
-  -H "Authorization: meowmeowmeow"
-```
-
-```javascript
-const kittn = require('kittn');
-
-let api = kittn.authorize('meowmeowmeow');
-let max = api.kittens.get(2);
-```
-
-> The above command returns JSON structured like this:
-
-```json
-{
-  "id": 2,
-  "name": "Max",
-  "breed": "unknown",
-  "fluffiness": 5,
-  "cuteness": 10
+dependencies {
+  compile('com.hover:android-sdk:0.8.8@aar') { transitive = true; }
 }
 ```
 
-This endpoint retrieves a specific kitten.
+> Add required permissions and API key to your Android manifest
 
-<aside class="warning">Inside HTML code blocks like this one, you can't use Markdown, so use <code>&lt;code&gt;</code> blocks to denote code.</aside>
+```xml
+<uses-permission android:name="android.permission.CALL_PHONE"/>
+<uses-permission android:name="android.permission.READ_PHONE_STATE"/>
+<uses-permission android:name="android.permission.RECEIVE_SMS"/>
+<uses-permission android:name="android.permission.READ_SMS"/>
+<uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED"/>
+<uses-permission android:name="android.permission.BIND_ACCESSIBILITY_SERVICE"/>
+<uses-permission android:name="android.permission.SYSTEM_ALERT_WINDOW"/>
+<uses-permission android:name="android.permission.INTERNET"/>
 
-### HTTP Request
+<uses-feature android:name="android.hardware.telephony"/>
 
-`GET http://example.com/kittens/<ID>`
+<meta-data
+   android:name="com.hover.ApiKey"  
+   android:value="YOUR_API_KEY"/>
+```
 
-### URL Parameters
+> Make sure you replace YOUR_API_KEY with an api key from an app you create
+
+# Wave Money
+
+Currency: <code>Kyats</code>
+
+Service id: <code>11</code>
+
+
+## Check balance
+
+```java
+Intent i = new Hover.Builder(this).request("balance").from(11);
+```
+
+Retrieve the current balance of the user's Wave Money account.
+
+## Send money (on-network)
+
+```java
+Intent i = new Hover.Builder(this).request("send_money_on_network", 
+  "150000", "Kyats", "+959555555555").from(11);
+```
+
+Send money from the users's Wave Money account to another Wave Money account.
 
 Parameter | Description
 --------- | -----------
-ID | The ID of the kitten to retrieve
+who | Recipient phone number
+amount | Amount to send in MKK cents
 
+## Send money (off-network)
+
+```java
+Hover.Builder(context).request("send_money_off_network", amount, "Kyats", who)
+  .extra("recipient_nrc", "123456").extra("withdrawl_code", "654321").from(11);
+```
+
+Send money from the users's Wave Money account to a recipient on a different network.
+
+Parameter | Description
+--------- | -----------
+who | Recipient phone number
+recipient_nrc | Recipient National Registration Card number
+amount | Amount to send in MKK cents
+withdrawal_code | Secret withdrawal code, must be provided by the sender
+
+## Airtime topup
+
+```java
+Intent i = new Hover.Builder(this).request("buy_airtime", 
+  "50000", "Kyats", "+959555555555").from(11);
+```
+
+Buy airtime with the user's Wave Money account.
+
+Parameter | Description
+--------- | -----------
+who | Recipient phone number, either the user's or another number
+amount | Amount of airtime to buy in MKK cents
