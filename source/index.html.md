@@ -71,7 +71,7 @@ dependencies {
 
 # Wave Money
 
-Currency: <code>Kyats</code>
+Currency: <code>MMK</code>
 
 Service id: <code>11</code>
 
@@ -88,7 +88,7 @@ Retrieve the current balance of the user's Wave Money account.
 
 ```java
 Intent i = new Hover.Builder(this).request("send", 
-  "150000", "Kyats", "+959555555555").from(11);
+  "5000", "MMK", "+959555555555").from(11);
 ```
 
 Send money from the users's Wave Money account to another Wave Money account.
@@ -96,12 +96,12 @@ Send money from the users's Wave Money account to another Wave Money account.
 Parameter | Description
 --------- | -----------
 who | Recipient phone number
-amount | Amount to send in MKK cents
+amount | Amount to send in MMK
 
 ## Send money (off-network)
 
 ```java
-Hover.Builder(context).request("send_money_off_network", amount, "Kyats", who)
+Hover.Builder(context).request("send_money_off_network", amount, "MMK", who)
   .extra("recipient_nrc", "123456").extra("withdrawl_code", "654321").from(11);
 ```
 
@@ -111,14 +111,14 @@ Parameter | Description
 --------- | -----------
 who | Recipient phone number
 recipient_nrc | Recipient National Registration Card number
-amount | Amount to send in MKK cents
+amount | Amount to send in MMK
 withdrawal_code | Secret withdrawal code, must be provided by the sender
 
 ## Airtime topup
 
 ```java
 Intent i = new Hover.Builder(this).request("buy_airtime", 
-  "50000", "Kyats", "+959555555555").from(11);
+  "5000", "MMK", "+959555555555").from(11);
 ```
 
 Buy airtime with the user's Wave Money account.
@@ -126,4 +126,4 @@ Buy airtime with the user's Wave Money account.
 Parameter | Description
 --------- | -----------
 who | Recipient phone number, either the user's or another number
-amount | Amount of airtime to buy in MKK cents
+amount | Amount of airtime to buy in MKK
