@@ -87,7 +87,7 @@ Retrieve the current balance of the user's Wave Money account.
 ## Send money (on-network)
 
 ```java
-Intent i = new Hover.Builder(this).request("send_money_on_network", 
+Intent i = new Hover.Builder(this).request("send", 
   "150000", "Kyats", "+959555555555").from(11);
 ```
 
