@@ -109,7 +109,7 @@ Send money from the users's Wave Money account to a recipient on a different net
 
 Parameter | Description
 --------- | -----------
-who | Recipient phone number
+who | Recipient phone number (can also be "*")
 recipient_nrc | Recipient National Registration Card number
 amount | Amount to send in MMK
 withdrawal_code | Secret withdrawal code, must be provided by the sender
