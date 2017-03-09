@@ -168,7 +168,7 @@
 
 <h1 id="wave-money">Wave Money</h1>
 
-<p>Currency: <code>Kyats</code></p>
+<p>Currency: <code>MMK</code></p>
 
 <p>Service id: <code>11</code></p>
 
@@ -178,8 +178,8 @@
 <p>Retrieve the current balance of the user&rsquo;s Wave Money account.</p>
 
 <h2 id="send-money-on-network">Send money (on-network)</h2>
-<pre class="highlight java"><code><span class="n">Intent</span> <span class="n">i</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Hover</span><span class="o">.</span><span class="na">Builder</span><span class="o">(</span><span class="k">this</span><span class="o">).</span><span class="na">request</span><span class="o">(</span><span class="s">"send_money_on_network"</span><span class="o">,</span> 
-  <span class="s">"150000"</span><span class="o">,</span> <span class="s">"Kyats"</span><span class="o">,</span> <span class="s">"+959555555555"</span><span class="o">).</span><span class="na">from</span><span class="o">(</span><span class="mi">11</span><span class="o">);</span>
+<pre class="highlight java"><code><span class="n">Intent</span> <span class="n">i</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Hover</span><span class="o">.</span><span class="na">Builder</span><span class="o">(</span><span class="k">this</span><span class="o">).</span><span class="na">request</span><span class="o">(</span><span class="s">"send"</span><span class="o">,</span> 
+  <span class="s">"5000"</span><span class="o">,</span> <span class="s">"MMK"</span><span class="o">,</span> <span class="s">"+959555555555"</span><span class="o">).</span><span class="na">from</span><span class="o">(</span><span class="mi">11</span><span class="o">);</span>
 </code></pre>
 <p>Send money from the users&rsquo;s Wave Money account to another Wave Money account.</p>
 
@@ -195,13 +195,13 @@
 </tr>
 <tr>
 <td>amount</td>
-<td>Amount to send in MKK cents</td>
+<td>Amount to send in MMK</td>
 </tr>
 </tbody></table>
 
 <h2 id="send-money-off-network">Send money (off-network)</h2>
-<pre class="highlight java"><code><span class="n">Hover</span><span class="o">.</span><span class="na">Builder</span><span class="o">(</span><span class="n">context</span><span class="o">).</span><span class="na">request</span><span class="o">(</span><span class="s">"send_money_off_network"</span><span class="o">,</span> <span class="n">amount</span><span class="o">,</span> <span class="s">"Kyats"</span><span class="o">,</span> <span class="n">who</span><span class="o">)</span>
-  <span class="o">.</span><span class="na">extra</span><span class="o">(</span><span class="s">"recipient_nrc"</span><span class="o">,</span> <span class="s">"123456"</span><span class="o">).</span><span class="na">extra</span><span class="o">(</span><span class="s">"withdrawl_code"</span><span class="o">,</span> <span class="s">"654321"</span><span class="o">).</span><span class="na">from</span><span class="o">(</span><span class="mi">11</span><span class="o">);</span>
+<pre class="highlight java"><code><span class="n">Hover</span><span class="o">.</span><span class="na">Builder</span><span class="o">(</span><span class="n">context</span><span class="o">).</span><span class="na">request</span><span class="o">(</span><span class="s">"send_money_off_network"</span><span class="o">,</span> <span class="n">amount</span><span class="o">,</span> <span class="s">"MMK"</span><span class="o">,</span> <span class="n">who</span><span class="o">)</span>
+  <span class="o">.</span><span class="na">extra</span><span class="o">(</span><span class="s">"recipient_nrc"</span><span class="o">,</span> <span class="s">"123456"</span><span class="o">).</span><span class="na">extra</span><span class="o">(</span><span class="s">"withdrawal_code"</span><span class="o">,</span> <span class="s">"654321"</span><span class="o">).</span><span class="na">from</span><span class="o">(</span><span class="mi">11</span><span class="o">);</span>
 </code></pre>
 <p>Send money from the users&rsquo;s Wave Money account to a recipient on a different network.</p>
 
@@ -213,7 +213,7 @@
 </thead><tbody>
 <tr>
 <td>who</td>
-<td>Recipient phone number</td>
+<td>Recipient phone number (can also be &ldquo;*&rdquo;)</td>
 </tr>
 <tr>
 <td>recipient_nrc</td>
@@ -221,7 +221,7 @@
 </tr>
 <tr>
 <td>amount</td>
-<td>Amount to send in MKK cents</td>
+<td>Amount to send in MMK</td>
 </tr>
 <tr>
 <td>withdrawal_code</td>
@@ -230,8 +230,8 @@
 </tbody></table>
 
 <h2 id="airtime-topup">Airtime topup</h2>
-<pre class="highlight java"><code><span class="n">Intent</span> <span class="n">i</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Hover</span><span class="o">.</span><span class="na">Builder</span><span class="o">(</span><span class="k">this</span><span class="o">).</span><span class="na">request</span><span class="o">(</span><span class="s">"buy_airtime"</span><span class="o">,</span> 
-  <span class="s">"50000"</span><span class="o">,</span> <span class="s">"Kyats"</span><span class="o">,</span> <span class="s">"+959555555555"</span><span class="o">).</span><span class="na">from</span><span class="o">(</span><span class="mi">11</span><span class="o">);</span>
+<pre class="highlight java"><code><span class="n">Intent</span> <span class="n">i</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Hover</span><span class="o">.</span><span class="na">Builder</span><span class="o">(</span><span class="k">this</span><span class="o">).</span><span class="na">request</span><span class="o">(</span><span class="s">"buy_airtime_other"</span><span class="o">,</span> 
+  <span class="s">"5000"</span><span class="o">,</span> <span class="s">"MMK"</span><span class="o">,</span> <span class="s">"+959555555555"</span><span class="o">).</span><span class="na">from</span><span class="o">(</span><span class="mi">11</span><span class="o">);</span>
 </code></pre>
 <p>Buy airtime with the user&rsquo;s Wave Money account.</p>
 
@@ -247,7 +247,7 @@
 </tr>
 <tr>
 <td>amount</td>
-<td>Amount of airtime to buy in MKK cents</td>
+<td>Amount of airtime to buy in MKK</td>
 </tr>
 </tbody></table>
 
