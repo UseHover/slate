@@ -117,7 +117,7 @@ withdrawal_code | Secret withdrawal code, must be provided by the sender
 ## Airtime topup
 
 ```java
-Intent i = new Hover.Builder(this).request("buy_airtime", 
+Intent i = new Hover.Builder(this).request("buy_airtime_other", 
   "5000", "MMK", "+959555555555").from(11);
 ```
 
