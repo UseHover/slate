@@ -102,7 +102,7 @@ amount | Amount to send in MMK
 
 ```java
 Hover.Builder(context).request("send_money_off_network", amount, "MMK", who)
-  .extra("recipient_nrc", "123456").extra("withdrawl_code", "654321").from(11);
+  .extra("recipient_nrc", "123456").extra("withdrawal_code", "654321").from(11);
 ```
 
 Send money from the users's Wave Money account to a recipient on a different network.
