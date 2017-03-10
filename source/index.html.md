@@ -75,6 +75,8 @@ Currency: <code>MMK</code>
 
 Service id: <code>11</code>
 
+Phone number format <code>9555555555</code>
+
 
 ## Check balance
 
@@ -88,7 +90,7 @@ Retrieve the current balance of the user's Wave Money account.
 
 ```java
 Intent i = new Hover.Builder(this).request("send", 
-  "5000", "MMK", "+959555555555").from(11);
+  "5000", "MMK", "9555555555").from(11);
 ```
 
 Send money from the users's Wave Money account to another Wave Money account.
@@ -118,7 +120,7 @@ withdrawal_code | Secret withdrawal code, must be provided by the sender
 
 ```java
 Intent i = new Hover.Builder(this).request("buy_airtime_other", 
-  "5000", "MMK", "+959555555555").from(11);
+  "5000", "MMK", "9555555555").from(11);
 ```
 
 Buy airtime with the user's Wave Money account.
@@ -126,4 +128,4 @@ Buy airtime with the user's Wave Money account.
 Parameter | Description
 --------- | -----------
 who | Recipient phone number, either the user's or another number
-amount | Amount of airtime to buy in MKK
+amount | Amount of airtime to buy in MMK
